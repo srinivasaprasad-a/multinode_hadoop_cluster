@@ -36,4 +36,6 @@ Docker containers doesnt recommend SSH, but hadoop services do ssh to connect ma
 
 Setting SSH port to 2222 in hadoop-env.sh, and added the same port in sshd_config, but still couldnt able to ssh.
 
-Due to unknown hosts error, had to set static IP address for each container. If you tried to run this on your docker instance, IP address might change, so do `docker attach <container_id>` and get IP address from \etc\hosts and update the run_all.sh file accordingly.
+Due to unknown hosts error, had to set static IP address for each container and add other nodes IP address to hosts file.
+
+While you try to run this on your docker instance, IP address of each container could be different, so do `docker attach <container_id>` and get IP address from `cat \etc\hosts` and update the run_all.sh file accordingly.
