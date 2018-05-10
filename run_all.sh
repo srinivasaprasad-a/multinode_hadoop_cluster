@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 sudo docker network rm -f hadoop-network &> /dev/null
 sudo docker network create \
 		--driver bridge \
@@ -13,15 +11,15 @@ sudo docker run -itd \
 		-p 8020:8020 \
 		-p 8088:8088 \
 		-p 9001:9001 \
-        -p 50070:50070 \
+                -p 50070:50070 \
 		-p 50090:50090 \
 		--net=hadoop-network \
 		--ip 172.19.0.2 \
 		--add-host hadoop-slave-1:172.19.0.3 \
 		--add-host hadoop-slave-2:172.19.0.4 \
-        --hostname hadoop-master \
-        --name hadoop-master \
-		srinivasaprasada/hadoop_master:latest &> /dev/null
+                --hostname hadoop-master \
+                --name hadoop-master \
+		hadoop_master:latest &> /dev/null
 echo "done."
 
 echo "start hadoop-slave-1 container..."
@@ -33,7 +31,7 @@ sudo docker run -itd \
 		--add-host hadoop-slave-2:172.19.0.4 \
 		--hostname hadoop-slave-1 \
 		--name hadoop-slave-1 \
-		srinivasaprasada/hadoop_slave:latest &> /dev/null
+		hadoop_slave:latest &> /dev/null
 echo "done."
 
 echo "start hadoop-slave-2 container..."
@@ -45,6 +43,6 @@ sudo docker run -itd \
 		--add-host hadoop-slave-1:172.19.0.3 \
 		--hostname hadoop-slave-2 \
 		--name hadoop-slave-2 \
-		srinivasaprasada/hadoop_slave:latest &> /dev/null
+		hadoop_slave:latest &> /dev/null
 echo "done."
 
